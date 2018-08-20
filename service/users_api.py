@@ -14,16 +14,11 @@ visitors = VisitorData()
 
 
 @app.route('/unique-users')
-def get_unique_user_counts():
-    osQuery = request.args.get('os')
-    if osQuery:
-        os = osQuery.split(',')
-        count = visitors.get_unique_os_users(os)
-        return jsonify({
-            'count': count
-            })
+def unique_user_counts():
+    osQuery = request.args.get('os').split(',') if request.args.get('os') else []
+    deviceQuery = request.args.get('device').split(',') if request.args.get('device') else []
 
-    count = visitors.get_unique_user_count()
+    count = visitors.get_unique_users_count(osQuery, deviceQuery)
     return jsonify({
         'count': count
         })

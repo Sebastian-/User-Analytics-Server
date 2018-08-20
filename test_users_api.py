@@ -23,7 +23,7 @@ class TestUsersAPI(TestCase):
 
 
     # Tests for /unique-users =====================================================================
-    """ Brute foreced values
+    """ Brute forced values
 
         Number of unique users is 8550022
         Users using OS 1: 1249619
