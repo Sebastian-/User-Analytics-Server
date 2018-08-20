@@ -1,3 +1,4 @@
 .git
 data.csv
-.md
+*.md
+brute_force.py
