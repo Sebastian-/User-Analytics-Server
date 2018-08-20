@@ -37,5 +37,13 @@ class TestUsersAPI(TestCase):
         self.assertEqual(1249619, data['count'])
 
 
+    def test_unique_users_multiple_os(self):
+        """Ensure /unique-users?os=0,6 response matches the brute forced value"""
+        response = self.client.get('/unique-users?os=0,6')
+        data = json.loads(response.data.decode())
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(1477249, data['count'])
+
+
 if __name__ == '__main__':
     unittest.main()
