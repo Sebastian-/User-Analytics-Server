@@ -1,8 +1,9 @@
 import json
 import unittest
-
 from flask_testing import TestCase
-from service.users_api import app
+
+from service import app
+
 
 
 class TestUsersAPI(TestCase):
@@ -23,7 +24,7 @@ class TestUsersAPI(TestCase):
         response = self.client.get('/unique-users')
         data = json.loads(response.data.decode())
         self.assertEqual(response.status_code, 200)
-        self.assertIn('8550022', data['count'])
+        self.assertEqual(8550022, data['count'])
 
 
 
