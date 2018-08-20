@@ -46,6 +46,12 @@ class VisitorData():
         return self.uniqueVisitors.index.get_level_values('id').nunique()
 
 
+    def get_unique_os_users(self, os):
+        return (self.uniqueVisitors
+                    .loc[self.uniqueVisitors.index.get_level_values('os').isin([os])]
+                    .index.get_level_values('id').nunique())
+
+
 if __name__ == '__main__':
     data = VisitorData()
     print(data.get_unique_user_count())

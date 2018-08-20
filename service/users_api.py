@@ -1,7 +1,7 @@
 import os.path
 import sys
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 # Workaround for getting tests to run without module load errors
 # TODO look into whether this is avoidable
@@ -15,6 +15,13 @@ visitors = VisitorData()
 
 @app.route('/unique-users')
 def get_unique_user_counts():
+    os = request.args.get('os')
+    if os:
+        count = visitors.get_unique_os_users(os)
+        return jsonify({
+            'count': count
+            })
+
     count = visitors.get_unique_user_count()
     return jsonify({
         'count': count
