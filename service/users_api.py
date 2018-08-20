@@ -15,8 +15,9 @@ visitors = VisitorData()
 
 @app.route('/unique-users')
 def get_unique_user_counts():
-    os = request.args.get('os')
-    if os:
+    osQuery = request.args.get('os')
+    if osQuery:
+        os = osQuery.split(',')
         count = visitors.get_unique_os_users(os)
         return jsonify({
             'count': count

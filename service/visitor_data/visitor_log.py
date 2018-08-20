@@ -48,7 +48,7 @@ class VisitorData():
 
     def get_unique_os_users(self, os):
         return (self.uniqueVisitors
-                    .loc[self.uniqueVisitors.index.get_level_values('os').isin([os])]
+                    .loc[self.uniqueVisitors.index.get_level_values('os').isin(os)]
                     .index.get_level_values('id').nunique())
 
 
