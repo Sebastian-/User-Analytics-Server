@@ -24,6 +24,17 @@ def unique_user_counts():
         })
 
 
+@app.route('/loyal-users')
+def loyal_user_counts():
+    osQuery = request.args.get('os').split(',') if request.args.get('os') else []
+    deviceQuery = request.args.get('device').split(',') if request.args.get('device') else []
+
+    count = visitors.get_loyal_users_count(osQuery, deviceQuery)
+    return jsonify({
+        'count': count
+        })
+
+
 @app.route('/ping')
 def ping():
     return jsonify({

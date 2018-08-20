@@ -1,4 +1,4 @@
 .git
-data.csv
+*.csv
 *.md
 brute_force.py
